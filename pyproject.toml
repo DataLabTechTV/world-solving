@@ -1,0 +1,25 @@
+[project]
+name = "world-solving"
+version = "0.1.0"
+description = "Agents for world-solving, or using LLMs to tackle the problems of the world."
+authors = [{ name = "Data Lab Tech", email = "mail@datalabtechtv.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+  "crewai[tools]==1.10.1",
+  "litellm>=1.82.1",
+]
+
+[project.scripts]
+world_solving = "world_solving.main:run"
+run_crew = "world_solving.main:run"
+train = "world_solving.main:train"
+replay = "world_solving.main:replay"
+test = "world_solving.main:test"
+run_with_trigger = "world_solving.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
