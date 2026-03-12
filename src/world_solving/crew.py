@@ -1,6 +1,8 @@
-from crewai import Agent, Crew, Process, Task
-from crewai.project import CrewBase, agent, crew, task
+import os
+
+from crewai import LLM, Agent, Crew, Process, Task
 from crewai.agents.agent_builder.base_agent import BaseAgent
+from crewai.project import CrewBase, agent, crew, task
 
 
 @CrewBase
@@ -9,6 +11,13 @@ class WorldSolving:
 
     agents: list[BaseAgent]
     tasks: list[Task]
+
+    llm = LLM(
+        model=os.getenv("MODEL", "ollama/qwen2.5:7b-instruct-q4_K_M"),
+        base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
+        num_ctx=2048,
+        temperature=0.2,
+    )
 
     # ----------------------------
     # Agent definitions
@@ -158,5 +167,6 @@ class WorldSolving:
             agents=self.agents,
             tasks=self.tasks,
             process=Process.sequential,  # Run tasks in stage order
+            manager_llm=self.llm,
             verbose=True,
         )
