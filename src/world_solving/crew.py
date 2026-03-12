@@ -1,63 +1,162 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
-# If you want to run a snippet of code before or after the crew starts,
-# you can use the @before_kickoff and @after_kickoff decorators
-# https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
+
 
 @CrewBase
-class WorldSolving():
-    """WorldSolving crew"""
+class WorldSolving:
+    """WorldSolving crew for tackling critical global problems"""
 
     agents: list[BaseAgent]
     tasks: list[Task]
 
-    # Learn more about YAML configuration files here:
-    # Agents: https://docs.crewai.com/concepts/agents#yaml-configuration-recommended
-    # Tasks: https://docs.crewai.com/concepts/tasks#yaml-configuration-recommended
-    
-    # If you would like to add tools to your agents, you can learn more about it here:
-    # https://docs.crewai.com/concepts/agents#agent-tools
+    # ----------------------------
+    # Agent definitions
+    # ----------------------------
     @agent
-    def researcher(self) -> Agent:
-        return Agent(
-            config=self.agents_config['researcher'], # type: ignore[index]
-            verbose=True
-        )
+    def systems_thinker(self) -> Agent:
+        return Agent(config=self.agents_config["systems_thinker"], verbose=True)  # type: ignore[index]
+
+    @agent
+    def economist(self) -> Agent:
+        return Agent(config=self.agents_config["economist"], verbose=True)  # type: ignore[index]
+
+    @agent
+    def climate_scientist(self) -> Agent:
+        return Agent(config=self.agents_config["climate_scientist"], verbose=True)  # type: ignore[index]
+
+    @agent
+    def public_health_expert(self) -> Agent:
+        return Agent(config=self.agents_config["public_health_expert"], verbose=True)  # type: ignore[index]
+
+    @agent
+    def engineering_lead(self) -> Agent:
+        return Agent(config=self.agents_config["engineering_lead"], verbose=True)  # type: ignore[index]
+
+    @agent
+    def technology_architect(self) -> Agent:
+        return Agent(config=self.agents_config["technology_architect"], verbose=True)  # type: ignore[index]
+
+    @agent
+    def behavioral_scientist(self) -> Agent:
+        return Agent(config=self.agents_config["behavioral_scientist"], verbose=True)  # type: ignore[index]
+
+    @agent
+    def political_strategist(self) -> Agent:
+        return Agent(config=self.agents_config["political_strategist"], verbose=True)  # type: ignore[index]
+
+    @agent
+    def operations_specialist(self) -> Agent:
+        return Agent(config=self.agents_config["operations_specialist"], verbose=True)  # type: ignore[index]
+
+    @agent
+    def finance_strategist(self) -> Agent:
+        return Agent(config=self.agents_config["finance_strategist"], verbose=True)  # type: ignore[index]
+
+    @agent
+    def risk_analyst(self) -> Agent:
+        return Agent(config=self.agents_config["risk_analyst"], verbose=True)  # type: ignore[index]
+
+    @agent
+    def ethics_advisor(self) -> Agent:
+        return Agent(config=self.agents_config["ethics_advisor"], verbose=True)  # type: ignore[index]
+
+    @agent
+    def integrator(self) -> Agent:
+        return Agent(config=self.agents_config["integrator"], verbose=True)  # type: ignore[index]
 
     @agent
     def reporting_analyst(self) -> Agent:
-        return Agent(
-            config=self.agents_config['reporting_analyst'], # type: ignore[index]
-            verbose=True
-        )
+        return Agent(config=self.agents_config["reporting_analyst"], verbose=True)  # type: ignore[index]
 
-    # To learn more about structured task outputs,
-    # task dependencies, and task callbacks, check out the documentation:
-    # https://docs.crewai.com/concepts/tasks#overview-of-a-task
+    # ----------------------------
+    # Task definitions (flat, single-agent)
+    # ----------------------------
     @task
-    def research_task(self) -> Task:
+    def problem_identification_map_global_systems(self) -> Task:
         return Task(
-            config=self.tasks_config['research_task'], # type: ignore[index]
+            config=self.tasks_config["problem_identification_map_global_systems"]  # type: ignore[index]
         )
 
     @task
-    def reporting_task(self) -> Task:
+    def problem_identification_detect_critical_problems(self) -> Task:
         return Task(
-            config=self.tasks_config['reporting_task'], # type: ignore[index]
-            output_file='report.md'
+            config=self.tasks_config["problem_identification_detect_critical_problems"]  # type: ignore[index]
         )
 
+    @task
+    def problem_identification_preliminary_impact_analysis(self) -> Task:
+        return Task(
+            config=self.tasks_config[  # type: ignore[index]
+                "problem_identification_preliminary_impact_analysis"
+            ]
+        )
+
+    @task
+    def solution_design_solution_brainstorm(self) -> Task:
+        return Task(config=self.tasks_config["solution_design_solution_brainstorm"])  # type: ignore[index]
+
+    @task
+    def solution_design_technical_feasibility(self) -> Task:
+        return Task(config=self.tasks_config["solution_design_technical_feasibility"])  # type: ignore[index]
+
+    @task
+    def solution_design_behavioral_feasibility(self) -> Task:
+        return Task(config=self.tasks_config["solution_design_behavioral_feasibility"])  # type: ignore[index]
+
+    @task
+    def feasibility_review_political_analysis(self) -> Task:
+        return Task(config=self.tasks_config["feasibility_review_political_analysis"])  # type: ignore[index]
+
+    @task
+    def feasibility_review_operations_analysis(self) -> Task:
+        return Task(config=self.tasks_config["feasibility_review_operations_analysis"])  # type: ignore[index]
+
+    @task
+    def feasibility_review_financial_analysis(self) -> Task:
+        return Task(config=self.tasks_config["feasibility_review_financial_analysis"])  # type: ignore[index]
+
+    @task
+    def feasibility_review_risk_assessment(self) -> Task:
+        return Task(config=self.tasks_config["feasibility_review_risk_assessment"])  # type: ignore[index]
+
+    @task
+    def feasibility_review_ethical_review(self) -> Task:
+        return Task(config=self.tasks_config["feasibility_review_ethical_review"])  # type: ignore[index]
+
+    @task
+    def integration_cross_domain_synthesis(self) -> Task:
+        return Task(config=self.tasks_config["integration_cross_domain_synthesis"])  # type: ignore[index]
+
+    @task
+    def integration_prepare_summary_for_reporting(self) -> Task:
+        return Task(
+            config=self.tasks_config["integration_prepare_summary_for_reporting"]  # type: ignore[index]
+        )  # type: ignore[index]
+
+    @task
+    def final_reporting_compile_final_report(self) -> Task:
+        return Task(
+            config=self.tasks_config["final_reporting_compile_final_report"],  # type: ignore[index]
+            output_file="report.md",
+        )
+
+    @task
+    def final_reporting_executive_summary(self) -> Task:
+        return Task(
+            config=self.tasks_config["final_reporting_executive_summary"],  # type: ignore[index]
+            output_file="executive_summary.md",
+        )
+
+    # ----------------------------
+    # Crew definition
+    # ----------------------------
     @crew
     def crew(self) -> Crew:
         """Creates the WorldSolving crew"""
-        # To learn how to add knowledge sources to your crew, check out the documentation:
-        # https://docs.crewai.com/concepts/knowledge#what-is-knowledge
-
         return Crew(
-            agents=self.agents, # Automatically created by the @agent decorator
-            tasks=self.tasks, # Automatically created by the @task decorator
-            process=Process.sequential,
+            agents=self.agents,
+            tasks=self.tasks,
+            process=Process.sequential,  # Run tasks in stage order
             verbose=True,
-            # process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
         )
