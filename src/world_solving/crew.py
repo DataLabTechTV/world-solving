@@ -13,7 +13,7 @@ class WorldSolving:
     tasks: list[Task]
 
     llm = LLM(
-        model=os.getenv("MODEL", "ollama/qwen2.5:7b-instruct-q4_K_M"),
+        model=os.getenv("MODEL", "ollama/llama3.1:8b"),
         base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
         num_ctx=2048,
         temperature=0.2,
